@@ -1,4 +1,5 @@
 ﻿*.iml
+*.properties
 /**/.idea/*
 /**/target/*
 /**/*/test/*
