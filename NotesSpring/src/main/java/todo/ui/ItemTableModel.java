@@ -25,7 +25,7 @@ public class ItemTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        itemList.add(rowIndex,aValue.toString());
+        itemList.set(rowIndex,aValue.toString());
     }
 
     @Override
