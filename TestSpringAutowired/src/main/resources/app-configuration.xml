@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+default-autowire="constructor">
+
+    <bean autowire="constructor" id="client" class="client.Client">
+        <property name="call">
+            <value>"LCT"</value>
+        </property>
+    </bean>
+
+    <bean autowire="constructor" id="director" class="director.Director">
+    </bean>
+
+
+    <bean primary="false"  id="builder" class="build.LocationCauseTimeBuilder">
+    </bean>
+
+
+    <bean primary="false" id="builder2" class="build.CountryLocationAndTimeBuilder">
+    </bean>
+
+    <bean primary="false" id="builder3" class="build.CurrentTimeAndCauseBuilder">
+    </bean>
+
+    <bean primary="true" id="builder4" class="build.StandardCauseAndLocationBuilder">
+    </bean>
+</beans>
