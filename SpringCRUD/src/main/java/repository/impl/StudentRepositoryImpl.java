@@ -25,13 +25,11 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public void deleteStudent(Integer id) {
-        if(id!=null) {
-            Session session = sessionFactory.getCurrentSession();
-            Student existStudent = session.get(Student.class, id);
-            if (existStudent != null) {
-                session.delete(existStudent);
-            }
-        } else throw new RuntimeException("id is null");
+        Session session = sessionFactory.getCurrentSession();
+        Student existStudent = session.get(Student.class, id);
+        if (existStudent != null) {
+            session.delete(existStudent);
+        }
     }
 
     @Override
@@ -45,18 +43,13 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public Student getStudent(Integer id) {
-        if (id!=null){
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Student.class, id);}
-        else {
-            throw new RuntimeException("id is null");
-        }
+        return session.get(Student.class, id);
     }
 
     @Override
     public List<Student> getAllStudents() {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("from Student").list();
-        return null;
+        return (List<Student>)session.createQuery("from Student").list();
     }
 }
