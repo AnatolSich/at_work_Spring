@@ -9,13 +9,12 @@ import service.Countries;
 @Component
 public class Director {
     ErrorMessageBuilder builder;
-
-    public Director(ErrorMessageBuilder builder) {
+    @Autowired
+    public Director(@Qualifier("LocationCauseTime") ErrorMessageBuilder builder) {
         this.builder = builder;
     }
 
-    @Autowired
-    public void setBuilder(@Qualifier("LocationCauseTime") ErrorMessageBuilder builder) {
+    public void setBuilder( ErrorMessageBuilder builder) {
         this.builder = builder;
     }
 
