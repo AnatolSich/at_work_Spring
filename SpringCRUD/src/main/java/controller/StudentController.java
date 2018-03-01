@@ -47,7 +47,7 @@ public class StudentController {
 
     @RequestMapping(value = "updateStudent/{id}", method = RequestMethod.GET)
     public String updateStudentGet(@PathVariable Integer id, Model model) {
-        model.addAttribute("student",studentService.getStudent(id));
+        model.addAttribute("studentAttribute",studentService.getStudent(id));
         return "updateStudent";
     }
 

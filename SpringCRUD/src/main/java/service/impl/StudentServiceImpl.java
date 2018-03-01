@@ -27,10 +27,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void deleteStudent(Integer id) {
-        if (id != null) {
+    public void deleteStudent(int id) {
             studentRepository.deleteStudent(id);
-        } else throw new RuntimeException("id is null");
     }
 
     @Override
@@ -41,14 +39,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getStudent(Integer id) {
-        if (id != null) {
+    public Student getStudent(int id) {
         return studentRepository.getStudent(id);
-        } else throw new RuntimeException("id is null");
     }
 
     @Override
     public List<Student> getAllStudents() {
-        return (List<Student>)studentRepository.getAllStudents();
+        List<Student> list = studentRepository.getAllStudents();
+        return list;
     }
 }

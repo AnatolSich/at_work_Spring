@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Toll
@@ -8,9 +9,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Add student</title>
 </head>
 <body>
-
+<form:form method="post" action = "addStudent">
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" value=""></td>
+        </tr>
+        <tr>
+            <td>External</td>
+            <td><input type="checkbox" name="isExternal"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Add student"></td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

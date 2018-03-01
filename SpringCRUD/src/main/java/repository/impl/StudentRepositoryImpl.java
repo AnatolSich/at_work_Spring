@@ -24,7 +24,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public void deleteStudent(Integer id) {
+    public void deleteStudent(int id) {
         Session session = sessionFactory.getCurrentSession();
         Student existStudent = session.get(Student.class, id);
         if (existStudent != null) {
@@ -42,7 +42,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public Student getStudent(Integer id) {
+    public Student getStudent(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Student.class, id);
     }

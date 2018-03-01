@@ -14,7 +14,7 @@ public class Student {
     @Column (name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private Integer id;
+    private int id;
 
     @Column(name="name")
     @NotNull
@@ -32,10 +32,6 @@ public class Student {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
