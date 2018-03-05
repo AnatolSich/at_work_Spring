@@ -6,24 +6,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "students")
 public class Student {
     @Id
-    @Column (name = "id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int id;
 
-    @Column(name="name")
+    @Column(name = "name")
     @NotNull
     @Basic
     private String name;
 
     @Column
     @NotNull
-    private Boolean isExternal;
+    private Boolean external;
 
     @Column(name = "createDate")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,18 +46,27 @@ public class Student {
     }
 
     public Boolean getExternal() {
-        return isExternal;
+        return external;
     }
 
     public void setExternal(Boolean external) {
-        isExternal = external;
+        this.external = external;
     }
 
     public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
+    public void setCreateDate() {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            String dateStr = timestamp.toString();
+            Date date = format.parse(dateStr);
+            dateStr = format.format(date);
+            this.createDate = Timestamp.valueOf(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -31,10 +31,11 @@ public class StudentController {
 
     @RequestMapping(value = "addStudent", method = RequestMethod.POST)
     public String addStudent(@RequestParam(value = "name") String name,
-                             @RequestParam(value = "isExternal", defaultValue = "false") Boolean isExternal) {
+                             @RequestParam(value = "external", defaultValue = "false") Boolean external) {
         Student student = new Student();
         student.setName(name);
-        student.setExternal(isExternal);
+        student.setExternal(external);
+        student.setCreateDate();
         studentService.addStudent(student);
         return "redirect:/";
     }
@@ -54,10 +55,10 @@ public class StudentController {
     @RequestMapping(value = "updateStudent/{id}", method = RequestMethod.POST)
     public String updateStudentPost(@PathVariable Integer id,
                                     @RequestParam(value = "name") String name,
-                                    @RequestParam(value = "isExternal") Boolean isExternal) {
+                                    @RequestParam(value = "external") Boolean external) {
         Student student = studentService.getStudent(id);
         student.setName(name);
-        student.setExternal(isExternal);
+        student.setExternal(external);
         studentService.updateStudent(student);
         return "redirect:/";
     }

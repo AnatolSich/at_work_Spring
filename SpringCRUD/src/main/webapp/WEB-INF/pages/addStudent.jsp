@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td>External</td>
-            <td><input type="checkbox" name="isExternal"></td>
+            <td><input type="checkbox" name="external"></td>
         </tr>
         <tr>
             <td><input type="submit" value="Add student"></td>

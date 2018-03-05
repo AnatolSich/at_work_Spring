@@ -24,12 +24,12 @@
                 <th></th>
                 <th></th>
             </tr>
-            <c:forEach items="students" var="student">
+            <c:forEach items="${students}" var="student">
                 <tr>
                     <td>${student.id}</td>
                     <td>${student.name}</td>
-                    <td><c:if test="${student.isExternal==true}">+</c:if></td>
-                    <td>${student.createdDate}</td>
+                    <td><c:if test="${student.external==true}">+</c:if></td>
+                    <td>${student.createDate}</td>
                     <td><a href="/updateStudent/${student.id}">Update student</a></td>
                     <td><a href="/deleteStudent/${student.id}">delete student</a></td>
                 </tr>

@@ -7,6 +7,6 @@ CREATE SEQUENCE global_stud_seq
 CREATE TABLE students (
   id         INTEGER PRIMARY KEY DEFAULT nextval('global_stud_seq'),
   name       VARCHAR(255) NOT NULL,
-  isExternal BOOLEAN             DEFAULT FALSE,
+  external BOOLEAN             DEFAULT FALSE,
   createDate TIMESTAMP           DEFAULT now()
 );
