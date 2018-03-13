@@ -1,18 +1,22 @@
 package model;
 
 
+import converter.DateConverter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static Constants.Constants.DATE_PATTERN;
+
 @Entity
 @Table(name = "students")
-public class Student {
+public class Student  implements Serializable{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +33,8 @@ public class Student {
     private Boolean external;
 
     @Column(name = "createDate")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
-    private Timestamp createDate;
+    @Convert (converter = DateConverter.class)
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -53,20 +56,7 @@ public class Student {
         this.external = external;
     }
 
-    public Timestamp getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
-    }
-
-    public void setCreateDate() {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            String dateStr = timestamp.toString();
-            Date date = format.parse(dateStr);
-            dateStr = format.format(date);
-            this.createDate = Timestamp.valueOf(dateStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 }

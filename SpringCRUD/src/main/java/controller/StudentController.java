@@ -12,6 +12,8 @@ import service.StudentService;
 
 import java.util.List;
 
+import static Constants.Constants.DATE_PATTERN;
+
 @Controller
 public class StudentController {
     @Autowired
@@ -20,6 +22,7 @@ public class StudentController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getAllStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
+        model.addAttribute("datePattern", DATE_PATTERN);
         model.addAttribute("students", students);
         return "index";
     }
@@ -35,7 +38,6 @@ public class StudentController {
         Student student = new Student();
         student.setName(name);
         student.setExternal(external);
-        student.setCreateDate();
         studentService.addStudent(student);
         return "redirect:/";
     }
@@ -48,14 +50,14 @@ public class StudentController {
 
     @RequestMapping(value = "updateStudent/{id}", method = RequestMethod.GET)
     public String updateStudentGet(@PathVariable Integer id, Model model) {
-        model.addAttribute("studentAttribute",studentService.getStudent(id));
+        model.addAttribute("studentAttribute", studentService.getStudent(id));
         return "updateStudent";
     }
 
     @RequestMapping(value = "updateStudent/{id}", method = RequestMethod.POST)
     public String updateStudentPost(@PathVariable Integer id,
                                     @RequestParam(value = "name") String name,
-                                    @RequestParam(value = "external") Boolean external) {
+                                    @RequestParam(value = "external", defaultValue = "false") Boolean external) {
         Student student = studentService.getStudent(id);
         student.setName(name);
         student.setExternal(external);

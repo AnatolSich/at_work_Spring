@@ -26,8 +26,8 @@
             <td><form:input path="name"/></td>
         </tr>
         <tr>
-            <td><form:label path="external">External</form:label></td>
-            <td><input type="checkbox" name="external"></td>
+            <td>External:</td>
+            <td><form:checkbox path="external"/></td>
         </tr>
     </table>
     <input type="submit" value="Save">

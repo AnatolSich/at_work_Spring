@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Toll
@@ -29,7 +30,7 @@
                     <td>${student.id}</td>
                     <td>${student.name}</td>
                     <td><c:if test="${student.external==true}">+</c:if></td>
-                    <td>${student.createDate}</td>
+                    <td><fmt:formatDate pattern="${datePattern}" value="${student.createDate}"/></td>
                     <td><a href="/updateStudent/${student.id}">Update student</a></td>
                     <td><a href="/deleteStudent/${student.id}">delete student</a></td>
                 </tr>
