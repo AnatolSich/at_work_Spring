@@ -2,17 +2,11 @@ package model;
 
 
 import converter.DateConverter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static Constants.Constants.DATE_PATTERN;
 
 @Entity
 @Table(name = "students")

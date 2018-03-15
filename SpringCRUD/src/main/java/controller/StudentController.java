@@ -12,7 +12,7 @@ import service.StudentService;
 
 import java.util.List;
 
-import static Constants.Constants.DATE_PATTERN;
+import static constants.Constants.DATE_PATTERN;
 
 @Controller
 public class StudentController {

@@ -29,16 +29,18 @@ public class StudentRepositoryImpl implements StudentRepository {
         Student existStudent = session.get(Student.class, id);
         if (existStudent != null) {
             session.delete(existStudent);
-        }
+        } else throw new RuntimeException("No student with defined id");
     }
 
     @Override
     public void updateStudent(Student student) {
         Session session = sessionFactory.getCurrentSession();
         Student existStudent = session.get(Student.class, student.getId());
+        if (existStudent != null) {
         existStudent.setName(student.getName());
         existStudent.setExternal(student.getExternal());
         session.saveOrUpdate(existStudent);
+        } else throw new RuntimeException("No student with defined id");
     }
 
     @Override
