@@ -14,29 +14,29 @@ import java.util.List;
 @Transactional
 public class EventRepositoryImpl implements EventRepository {
     @Autowired
-    private SessionFactory sessionFactory;
+    private SessionFactory eventSessionFactory;
 
     @Override
     public Event getEvent(int id) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = eventSessionFactory.getCurrentSession();
         return session.get(Event.class, id);
     }
 
     @Override
     public List<Event> geaAllEvents() {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = eventSessionFactory.getCurrentSession();
         return (List<Event>) session.createQuery("from Event").list();
     }
 
     @Override
     public void addEvent(Event event) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = eventSessionFactory.getCurrentSession();
         session.save(event);
     }
 
     @Override
     public void deleteEvent(int id) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = eventSessionFactory.getCurrentSession();
         Event existEvent = session.get(Event.class, id);
         if (existEvent != null)
             session.delete("Event", existEvent);
@@ -45,7 +45,7 @@ public class EventRepositoryImpl implements EventRepository {
 
     @Override
     public void updateEvent(Event event) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = eventSessionFactory.getCurrentSession();
         Event existEvent = session.get(Event.class, event.getId());
         if (existEvent != null) {
             existEvent.setEventName(event.getEventName());

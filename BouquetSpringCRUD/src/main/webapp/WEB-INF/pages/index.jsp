@@ -14,7 +14,10 @@
 <h1>FlowersShop</h1>
 <table border="1">
     <tr>
-        <th><a href=""></a></th>
+        <th><a href="/event/">Event List</a></th>
+    </tr>
+    <tr>
+        <th><a href="/bouquet/">Bouquet List</a></th>
     </tr>
 </table>
 </body>

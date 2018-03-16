@@ -15,12 +15,15 @@ public class Event implements Serializable{
     @Column(name = "id")
     @NotNull
     private int id;
+
     @Column(name = "eventName")
     @NotNull
     private String eventName;
+
     @Column(name = "eventDate")
     @NotNull
     private Date eventDate;
+
     @Column(name = "regDate")
     @NotNull
     private Date regDate;
@@ -28,7 +31,6 @@ public class Event implements Serializable{
     public int getId() {
         return id;
     }
-
 
     public String getEventName() {
         return eventName;
@@ -50,4 +52,7 @@ public class Event implements Serializable{
         return regDate;
     }
 
+    public void setRegDate() {
+        this.regDate = new Date();
+    }
 }

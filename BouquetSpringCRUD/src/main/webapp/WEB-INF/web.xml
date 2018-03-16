@@ -5,7 +5,7 @@
          version="3.1">
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/application-context.xml</param-value>
+        <param-value>/WEB-INF/application-context.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -20,4 +20,13 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>DatePatternFilter</filter-name>
+        <filter-class>filters.DatePatternFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DatePatternFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>List of bouquets</title>
 </head>
 <body>
-
+<h1>List of bouquets</h1>
+<table border="1">
+    <tr>
+        <th></th>
+    </tr>
+</table>
 </body>
 </html>

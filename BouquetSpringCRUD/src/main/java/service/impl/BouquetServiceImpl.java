@@ -2,11 +2,13 @@ package service.impl;
 
 import model.Bouquet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repository.BouquetRepository;
 import service.BouquetService;
 
 import java.util.List;
 
+@Service
 public class BouquetServiceImpl implements BouquetService {
 
     @Autowired
