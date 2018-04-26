@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -27,6 +28,11 @@ public class Event implements Serializable{
     @Column(name = "regDate")
     @NotNull
     private Date regDate;
+
+    //mappedBy указывает на поле в классе Bouquet по которому проверяется,
+    // попадет ли экземпляр класса Bouquet в List
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "event")
+    private List<Bouquet> bouquets;
 
     public int getId() {
         return id;
@@ -54,5 +60,13 @@ public class Event implements Serializable{
 
     public void setRegDate() {
         this.regDate = new Date();
+    }
+
+    public List<Bouquet> getBouquets() {
+        return bouquets;
+    }
+
+    public void setBouquets(List<Bouquet> bouquets) {
+        this.bouquets = bouquets;
     }
 }

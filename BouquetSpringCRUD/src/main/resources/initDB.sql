@@ -24,11 +24,11 @@ CREATE TABLE bouquets (
   eventId     INTEGER     NOT NULL,
   FOREIGN KEY (eventId) REFERENCES events (id) ON DELETE CASCADE
 );
+--set lc_monetary='de_DE(at)euro';
+--SET LC_MONETARY = 'Italian_Italy.1252';
+--SHOW LC_MONETARY;
 
-SET LC_MONETARY = 'Italian_Italy.1252';
-SHOW LC_MONETARY;
-
-SELECT pg_reload_conf();
+--SELECT pg_reload_conf();
 
 INSERT INTO events (eventName, eventDate) VALUES
   ('Birthday', make_date(2016, 05, 18)),

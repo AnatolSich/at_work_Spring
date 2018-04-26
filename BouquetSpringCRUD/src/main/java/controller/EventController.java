@@ -20,7 +20,7 @@ public class EventController {
     private EventService eventService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String allEvents(Model model) {
+    public String getAllEventsGet(Model model) {
         List<Event> list = eventService.geaAllEvents();
         model.addAttribute("events", list);
         return "listEvents";

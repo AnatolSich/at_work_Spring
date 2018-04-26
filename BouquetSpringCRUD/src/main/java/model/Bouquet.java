@@ -2,7 +2,6 @@ package model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,8 +33,8 @@ public class Bouquet implements Serializable{
     @NotNull
     private Boolean delivery;
 
-    @ManyToOne
-    @ForeignKey(name = "eventId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", nullable = false)
     @OnDelete(action= OnDeleteAction.CASCADE)
     private Event event;
 
