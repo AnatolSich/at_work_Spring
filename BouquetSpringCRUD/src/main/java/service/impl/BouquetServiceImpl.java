@@ -27,10 +27,12 @@ public class BouquetServiceImpl implements BouquetService {
     }
 
     @Override
-    public void addBouquet(Bouquet bouquet) {
-        if (bouquet != null)
-            bouquetRepository.addBouquet(bouquet);
-        else throw new RuntimeException("Adding bouquet is null");
+    public void addBouquet(Bouquet bouquet, int eventId) {
+        if (bouquet == null)
+            throw new RuntimeException("Adding bouquet is null");
+        else if (eventId < 0) throw new RuntimeException("Adding bouquet is impossible, invalid value eventId<=0");
+        else bouquetRepository.addBouquet(bouquet, eventId);
+
     }
 
     @Override

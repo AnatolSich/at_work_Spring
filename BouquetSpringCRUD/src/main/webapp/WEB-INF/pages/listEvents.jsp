@@ -13,14 +13,14 @@
 </head>
 <body>
 <h1>List of events</h1>
-<table>
+<table border="1">
     <tr>
         <th>Event Name</th>
         <th>Event Date</th>
         <th>Reg. Date</th>
-        <th colspan="3"></th>
+        <th colspan="3">Actions</th>
     </tr>
-    <c:forEach items="events" var="event">
+    <c:forEach items="${events}" var="event">
         <tr>
             <td>${event.eventName}</td>
             <td>${event.eventDate}</td>
@@ -30,7 +30,7 @@
             <td><a href="/bouquet/bouquetsByEvent">List of bouquets</a></td>
         </tr>
     </c:forEach>
-    <a href="/event/addEvent">Add event</a>
 </table>
+<a href="/event/addEvent">Add event</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package repository.impl;
 
 import model.Bouquet;
+import model.Event;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,14 @@ public class BouquetRepositoryImpl implements BouquetRepository {
     @Override
     public List<Bouquet> geaAllBouquets() {
         Session session = bouquetSessionFactory.getCurrentSession();
-        return (List<Bouquet>) session.createQuery("from Bouquet").list();
+        return (List<Bouquet>) session.createQuery("from model.Bouquet").list();
     }
 
     @Override
-    public void addBouquet(Bouquet bouquet) {
+    public void addBouquet(Bouquet bouquet, int eventId) {
         Session session = bouquetSessionFactory.getCurrentSession();
-        session.save("Bouquet", bouquet);
+        bouquet.setEvent(session.get(Event.class, eventId));
+        session.persist("Bouquet", bouquet);
     }
 
     @Override
@@ -58,6 +60,5 @@ public class BouquetRepositoryImpl implements BouquetRepository {
             existBouquet.setEvent(bouquet.getEvent());
             session.saveOrUpdate("Bouquet", existBouquet);
         } else throw new RuntimeException("No bouquet with defined id");
-
     }
 }

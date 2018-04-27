@@ -25,7 +25,7 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
     public List<Event> geaAllEvents() {
         Session session = eventSessionFactory.getCurrentSession();
-        return (List<Event>) session.createQuery("from Event").list();
+        return (List<Event>) session.createQuery("from model.Event").list();
     }
 
     @Override
