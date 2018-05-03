@@ -5,9 +5,10 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.awt.*;
+import java.awt.Color;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "bouquets")
@@ -29,14 +30,8 @@ public class Bouquet implements Serializable{
     @NotNull
     private BigDecimal cost;
 
-    @Column(name = "delivery")
-    @NotNull
-    private Boolean delivery;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
-    @OnDelete(action= OnDeleteAction.CASCADE)
-    private Event event;
+    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "bouquet")
+    private List<OrderItem> orderItems;
 
     public int getId() {
         return id;
@@ -66,19 +61,11 @@ public class Bouquet implements Serializable{
         this.cost = cost;
     }
 
-    public Boolean getDelivery() {
-        return delivery;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setDelivery(Boolean delivery) {
-        this.delivery = delivery;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

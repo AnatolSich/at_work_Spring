@@ -33,9 +33,8 @@ public class BouquetRepositoryImpl implements BouquetRepository {
     }
 
     @Override
-    public void addBouquet(Bouquet bouquet, int eventId) {
+    public void addBouquet(Bouquet bouquet) {
         Session session = bouquetSessionFactory.getCurrentSession();
-        bouquet.setEvent(session.get(Event.class, eventId));
         session.persist("Bouquet", bouquet);
     }
 
@@ -56,8 +55,6 @@ public class BouquetRepositoryImpl implements BouquetRepository {
             existBouquet.setBouquetName(bouquet.getBouquetName());
             existBouquet.setColor(bouquet.getColor());
             existBouquet.setCost(bouquet.getCost());
-            existBouquet.setDelivery(bouquet.getDelivery());
-            existBouquet.setEvent(bouquet.getEvent());
             session.saveOrUpdate("Bouquet", existBouquet);
         } else throw new RuntimeException("No bouquet with defined id");
     }

@@ -25,14 +25,18 @@ public class Event implements Serializable{
     @NotNull
     private Date eventDate;
 
+    @Column (name = "delivery")
+    @NotNull
+    private boolean delivery;
+
     @Column(name = "regDate")
     @NotNull
     private Date regDate;
 
-    //mappedBy указывает на поле в классе Bouquet по которому проверяется,
-    // попадет ли экземпляр класса Bouquet в List
+    //mappedBy указывает на поле в классе OrderItem по которому проверяется,
+    // попадет ли экземпляр класса OrderItem в List
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "event")
-    private List<Bouquet> bouquets;
+    private List<OrderItem> orderItems;
 
     public int getId() {
         return id;
@@ -54,6 +58,14 @@ public class Event implements Serializable{
         this.eventDate = eventDate;
     }
 
+    public boolean isDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(boolean delivery) {
+        this.delivery = delivery;
+    }
+
     public Date getRegDate() {
         return regDate;
     }
@@ -62,11 +74,11 @@ public class Event implements Serializable{
         this.regDate = new Date();
     }
 
-    public List<Bouquet> getBouquets() {
-        return bouquets;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setBouquets(List<Bouquet> bouquets) {
-        this.bouquets = bouquets;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }
