@@ -23,7 +23,7 @@
 
     <filter>
         <filter-name>DatePatternFilter</filter-name>
-        <filter-class>filters.DatePatternFilter</filter-class>
+        <filter-class>app.filters.DatePatternFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>DatePatternFilter</filter-name>
