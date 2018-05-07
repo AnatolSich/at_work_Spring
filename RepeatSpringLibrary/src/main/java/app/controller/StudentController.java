@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServlet;
 
 @Controller
 @RequestMapping(value = "/Student")
-public class StudentController extends HttpServlet {
+public class StudentController {
 
     @Autowired
     StudentRepo studentRepo;
@@ -38,14 +37,14 @@ public class StudentController extends HttpServlet {
         return "redirect:/";
     }
 
-     @RequestMapping(value = "/update/${id}", method = RequestMethod.GET)
+     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable int id,
                          Model model){
         model.addAttribute("student", studentRepo.getStudent(id));
         return "updateStudent";
     }
 
-    @RequestMapping(value = "/update/${id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@RequestParam(value = "name") String name,
                          @PathVariable int id){
         Student student = studentRepo.getStudent(id);
@@ -54,7 +53,7 @@ public class StudentController extends HttpServlet {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/delete/${id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable int id){
         studentRepo.deleteStudent(id);
         return "redirect:/";

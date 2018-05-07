@@ -13,9 +13,9 @@
 </head>
 <body>
 <h1>Update book</h1>
-<form:form action="/Book/update/${book.id}/${book.student.id}" method="post">
+<form:form action="/Book/update/${book.id}/${studentId}" method="post">
     <input type="text" name="title" value="${book.title}"/>
-    <input type="text" name="student Id" value="${book.student.id}"/>
+    <input type="text" name="studentId" value="${book.student.id}"/>
     <input type="submit" value="Submit"/>
 </form:form>
 </body>

@@ -17,7 +17,7 @@ public class Book {
     @NotNull
     private String title;
 
-    @ManyToOne (fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "studentid", nullable = false)
     private Student student;
 

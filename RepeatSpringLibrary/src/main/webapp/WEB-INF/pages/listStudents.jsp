@@ -28,7 +28,7 @@
             <td><a href="/Student/delete/${student.id}">Delete</a></td>
         </tr>
     </c:forEach>
-    <tr><a href="/Student/add">Add student</a></tr>
 </table>
+<br><a href="/Student/add">Add student</a></br>
 </body>
 </html>
