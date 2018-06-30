@@ -18,13 +18,13 @@ public class OrderItem {
     private int id;
 
     @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "id",nullable = false)
+    @JoinColumn(name = "eventId",nullable = false)
     @NotNull
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Event event;
 
     @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn (name = "id",nullable = false)
+    @JoinColumn (name = "bouquetId",nullable = false)
     @NotNull
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Bouquet bouquet;

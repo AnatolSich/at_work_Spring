@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static app.util.Constants.DATE_PATTERN;
 
-//@WebFilter
+//@WebFilter()
 public class DatePatternFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

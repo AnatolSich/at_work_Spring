@@ -1,6 +1,7 @@
 package app.model;
 
 
+//import javax.persistence.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

@@ -30,6 +30,8 @@ public class Bouquet implements Serializable{
     @NotNull
     private BigDecimal cost;
 
+    //mappedBy указывает на поле в классе OrderItem по которому проверяется,
+    // попадет ли экземпляр класса OrderItem в List
     @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "bouquet")
     private List<OrderItem> orderItems;
 
