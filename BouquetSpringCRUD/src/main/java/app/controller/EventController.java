@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import app.service.EventService;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static app.util.Constants.DATE_PATTERN;
 
 @Controller
 @RequestMapping(value = "/event")
@@ -34,13 +38,18 @@ public class EventController {
 
     @RequestMapping(value = "addEvent", method = RequestMethod.POST)
     public String addEventPost(@RequestParam(value = "eventName") String eventName,
-                               @RequestParam(value = "eventDate") Date eventDate) {
+                               @RequestParam(value = "eventDate") String eventDate
+    ) {
         Event event = new Event();
         event.setEventName(eventName);
-        event.setEventDate(eventDate);
+        try {
+            event.setEventDate(new SimpleDateFormat(DATE_PATTERN).parse(eventDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         event.setRegDate();
         eventService.addEvent(event);
-        return "redirect:/";
+        return "redirect:/event/";
     }
 
     @RequestMapping(value = "updateEvent/{id}", method = RequestMethod.GET)
@@ -57,12 +66,12 @@ public class EventController {
         event.setEventName(eventName);
         event.setEventDate(eventDate);
         eventService.updateEvent(event);
-        return "redirect:/";
+        return "redirect:/event/";
     }
 
     @RequestMapping(value = "deleteEvent/{id}", method = RequestMethod.GET)
     public String deleteEventGet(@PathVariable int id) {
         eventService.deleteEvent(id);
-        return "redirect:/";
+        return "redirect:/event/";
     }
 }

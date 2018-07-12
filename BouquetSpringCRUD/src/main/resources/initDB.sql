@@ -15,7 +15,7 @@ CREATE SEQUENCE seq_bouquets
 CREATE TABLE events (
   id        INTEGER PRIMARY KEY        DEFAULT nextval('seq_events'),
   eventName VARCHAR(50) NOT NULL,
-  eventDate DATE        NOT NULL,
+  eventDate TIMESTAMP   NOT NULL,
   delivery  BOOLEAN     NOT NULL       DEFAULT FALSE,
   regDate   TIMESTAMP                  DEFAULT now()
 );
@@ -42,9 +42,9 @@ CREATE TABLE order_items (
 --SELECT pg_reload_conf();
 
 INSERT INTO events (eventName, eventDate, delivery) VALUES
-  ('Birthday', make_date(2016, 05, 18), TRUE),
-  ('St. Barbara Day', make_date(2016, 07, 02), FALSE),
-  ('Helloween', make_date(2016, 09, 24), TRUE);
+  ('Birthday', make_timestamp(2016, 05, 18, 09, 00, 00), TRUE),
+  ('St. Barbara Day', make_timestamp(2016, 07, 02, 10, 00, 00), FALSE),
+  ('Helloween', make_timestamp(2016, 09, 24, 18, 00, 00), TRUE);
 
 INSERT INTO bouquets (bouquetName, color, cost) VALUES
   ('lover', 'red', 154.68),

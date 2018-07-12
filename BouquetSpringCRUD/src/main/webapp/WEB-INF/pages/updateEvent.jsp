@@ -1,3 +1,4 @@
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
@@ -14,7 +15,7 @@
 </head>
 <body>
 <h1>Update event</h1>
-<c:url var="url" value="/updateEvent/${eventAttribute.id}"/>
+<c:url var="url" value="/event/updateEvent/${eventAttribute.id}"/>
 
 <form:form method="post" action="${url}" modelAttribute="eventAttribute">
     <table border="1">

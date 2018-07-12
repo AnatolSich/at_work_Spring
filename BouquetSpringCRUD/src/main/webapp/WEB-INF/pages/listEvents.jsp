@@ -25,9 +25,9 @@
             <td>${event.eventName}</td>
             <td>${event.eventDate}</td>
             <td>${event.regDate}</td>
-            <td><a href="/event/updateEvent">Update</a></td>
-            <td><a href="/event/deleteEvent">Delete</a></td>
-            <td><a href="/bouquet/bouquetsByEvent">List of bouquets</a></td>
+            <td><a href="/event/updateEvent/${event.id}">Update</a></td>
+            <td><a href="/event/deleteEvent/${event.id}">Delete</a></td>
+            <td><a href="/bouquet/bouquetsByEvent/${event.id}">List of bouquets</a></td>
         </tr>
     </c:forEach>
 </table>

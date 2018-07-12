@@ -2,6 +2,8 @@ package app.model;
 
 
 //import javax.persistence.*;
+import app.converter.EventDateConverter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -22,8 +24,10 @@ public class Event implements Serializable{
     @NotNull
     private String eventName;
 
+
     @Column(name = "eventDate")
     @NotNull
+    @Convert(converter = EventDateConverter.class)
     private Date eventDate;
 
     @Column (name = "delivery")
@@ -32,6 +36,7 @@ public class Event implements Serializable{
 
     @Column(name = "regDate")
     @NotNull
+    @Convert(converter = EventDateConverter.class)
     private Date regDate;
 
     //mappedBy указывает на поле в классе OrderItem по которому проверяется,
