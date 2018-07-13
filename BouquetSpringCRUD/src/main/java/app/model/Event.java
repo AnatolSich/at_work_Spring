@@ -3,11 +3,12 @@ package app.model;
 
 //import javax.persistence.*;
 import app.converter.EventDateConverter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -28,7 +29,8 @@ public class Event implements Serializable{
     @Column(name = "eventDate")
     @NotNull
     @Convert(converter = EventDateConverter.class)
-    private Date eventDate;
+   // @DateTimeFormat()
+    private LocalDateTime eventDate;
 
     @Column (name = "delivery")
     @NotNull
@@ -37,7 +39,7 @@ public class Event implements Serializable{
     @Column(name = "regDate")
     @NotNull
     @Convert(converter = EventDateConverter.class)
-    private Date regDate;
+    private LocalDateTime regDate;
 
     //mappedBy указывает на поле в классе OrderItem по которому проверяется,
     // попадет ли экземпляр класса OrderItem в List
@@ -56,11 +58,11 @@ public class Event implements Serializable{
         this.eventName = eventName;
     }
 
-    public Date getEventDate() {
+    public LocalDateTime getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(LocalDateTime eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -72,12 +74,12 @@ public class Event implements Serializable{
         this.delivery = delivery;
     }
 
-    public Date getRegDate() {
+    public LocalDateTime getRegDate() {
         return regDate;
     }
 
     public void setRegDate() {
-        this.regDate = new Date();
+        this.regDate = LocalDateTime.now();
     }
 
     public List<OrderItem> getOrderItems() {

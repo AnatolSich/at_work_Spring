@@ -12,6 +12,7 @@ import app.service.EventService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -38,15 +39,11 @@ public class EventController {
 
     @RequestMapping(value = "addEvent", method = RequestMethod.POST)
     public String addEventPost(@RequestParam(value = "eventName") String eventName,
-                               @RequestParam(value = "eventDate") String eventDate
+                               @RequestParam(value = "eventDate") LocalDateTime eventDate
     ) {
         Event event = new Event();
         event.setEventName(eventName);
-        try {
-            event.setEventDate(new SimpleDateFormat(DATE_PATTERN).parse(eventDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        event.setEventDate(eventDate);
         event.setRegDate();
         eventService.addEvent(event);
         return "redirect:/event/";
@@ -61,7 +58,7 @@ public class EventController {
     @RequestMapping(value = "updateEvent/{id}", method = RequestMethod.POST)
     public String updateEventPost(@PathVariable int id,
                                   @RequestParam(value = "eventName") String eventName,
-                                  @RequestParam(value = "eventDate") Date eventDate) {
+                                  @RequestParam(value = "eventDate") LocalDateTime eventDate) {
         Event event = eventService.getEvent(id);
         event.setEventName(eventName);
         event.setEventDate(eventDate);

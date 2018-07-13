@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>Event date</td>
-            <td><input type="date" name="eventDate" value="${datePattern}"></td>
+            <td><input type="datetime-local" name="eventDate" value="${datePattern}"></td>
         </tr>
     </table>
     <input type="submit" value="Submit">

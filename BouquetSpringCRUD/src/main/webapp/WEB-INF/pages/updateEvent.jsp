@@ -1,6 +1,6 @@
-<%@ page import="java.util.Date" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Toll
@@ -15,24 +15,17 @@
 </head>
 <body>
 <h1>Update event</h1>
-<c:url var="url" value="/event/updateEvent/${eventAttribute.id}"/>
 
-<form:form method="post" action="${url}" modelAttribute="eventAttribute">
-    <table border="1">
-        <tr>
-            <td><form:label path="id">Id</form:label></td>
-            <td><form:input path="id" disabled="true"/> </td>
-        </tr>
-        <tr>
-            <td><form:label path="eventName">Event Name</form:label></td>
-            <td><form:input path="eventName"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="eventDate">Event Date</form:label></td>
-            <td><form:input path="eventDate"/></td>
-        </tr>
-    </table>
+
+<%--<c:url var="url" value="/event/updateEvent/${eventAttribute.id}"/>--%>
+
+<form method="post" action="/event/updateEvent/${eventAttribute.id}">
+
+    ID <input type="text" disabled=disabled name="id" value="<c:out value="${eventAttribute.id}"/>">
+    EventName <input type="text" name="eventName" value="<c:out value="${eventAttribute.eventName}"/>">
+    EventDate <input type="datetime-local" name="eventDate" value="<c:out value="${eventAttribute.eventDate}"/>">
     <input type="submit" value="Save">
-</form:form>
+
+</form>
 </body>
 </html>
